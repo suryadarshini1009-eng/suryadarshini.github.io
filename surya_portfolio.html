@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surya Darshini | Business & Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #f5f3ee;
+    --accent: #c84b31;
+    --accent2: #2a6049;
+    --muted: #7a7670;
+    --card-bg: #ffffff;
+    --border: #e0ddd6;
+    --tag-bg: #eeeae2;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 3rem;
+    background: rgba(245,243,238,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 7rem 3rem 4rem;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-text { animation: fadeUp 0.8s ease both; }
+  .hero-eyebrow {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 32px; height: 1.5px; background: var(--accent);
+  }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 2.2rem;
+    line-height: 1.7;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.6rem;
+    font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em;
+    border-radius: 3px; text-decoration: none; transition: all 0.2s;
+    cursor: pointer; border: none;
+  }
+  .btn-primary {
+    background: var(--ink); color: var(--paper);
+  }
+  .btn-primary:hover { background: var(--accent); }
+  .btn-outline {
+    background: transparent; color: var(--ink);
+    border: 1.5px solid var(--ink);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem; color: var(--accent);
+    display: block; line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--muted); font-weight: 500; letter-spacing: 0.04em; }
+
+  /* SECTION COMMON */
+  section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    line-height: 1.15; letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+  .section-intro { font-size: 1rem; color: var(--muted); max-width: 560px; margin-bottom: 3.5rem; line-height: 1.7; }
+  hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start;
+  }
+  .about-body { font-size: 1rem; color: var(--ink); line-height: 1.8; }
+  .about-body p { margin-bottom: 1.2rem; }
+  .about-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--tag-bg); border-radius: 20px;
+    padding: 0.35rem 0.9rem; font-size: 0.78rem; font-weight: 600;
+    color: var(--accent2); letter-spacing: 0.04em; margin-bottom: 1.5rem;
+  }
+  .about-details { display: flex; flex-direction: column; gap: 1rem; }
+  .detail-item { border-left: 2px solid var(--accent); padding-left: 1rem; }
+  .detail-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .detail-value { font-size: 0.95rem; font-weight: 500; color: var(--ink); margin-top: 0.15rem; }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem;
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  .project-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--accent); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-card.featured { border-color: var(--accent); }
+  .project-card.featured::before { transform: scaleX(1); }
+
+  .project-icon {
+    width: 44px; height: 44px; border-radius: 8px;
+    background: var(--tag-bg); display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; margin-bottom: 1.2rem;
+  }
+  .project-tag-row { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+  .tag {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.07em;
+    text-transform: uppercase; padding: 0.25rem 0.6rem;
+    border-radius: 3px; background: var(--tag-bg); color: var(--muted);
+  }
+  .tag.accent { background: #fce8e3; color: var(--accent); }
+  .tag.green { background: #e3f0ea; color: var(--accent2); }
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--ink);
+  }
+  .project-client {
+    font-size: 0.78rem; font-weight: 600; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.8rem;
+  }
+  .project-desc { font-size: 0.92rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; flex: 1; }
+  .project-outcomes { margin-bottom: 1.2rem; }
+  .outcome {
+    font-size: 0.83rem; color: var(--ink);
+    padding: 0.2rem 0;
+    display: flex; gap: 0.5rem; align-items: flex-start;
+  }
+  .outcome::before { content: '→'; color: var(--accent); flex-shrink: 0; font-weight: 600; }
+  .project-tools {
+    display: flex; gap: 0.4rem; flex-wrap: wrap; padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .tool-chip {
+    font-size: 0.7rem; font-weight: 500; color: var(--ink);
+    background: var(--tag-bg); padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+  }
+  .skill-group h3 {
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+  }
+  .skill-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .skill-list li {
+    font-size: 0.9rem; color: var(--ink);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .skill-list li::before {
+    content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .contact-text p { font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.8rem;
+    font-size: 0.9rem; color: var(--ink); text-decoration: none;
+    font-weight: 500; padding: 0.9rem 1.2rem;
+    border: 1px solid var(--border); border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+  .contact-link-icon { font-size: 1.1rem; }
+  .availability {
+    background: var(--accent2); color: white;
+    border-radius: 8px; padding: 2rem;
+    font-size: 0.95rem; line-height: 1.7;
+  }
+  .availability strong { display: block; font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .avail-detail { font-size: 0.85rem; opacity: 0.85; margin-top: 0.4rem; }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 2rem 3rem;
+    font-size: 0.8rem; color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+
+  /* FULL WIDTH SECTIONS */
+  .full-width-section {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--card-bg);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 3rem; }
+    .hero-stats { grid-template-columns: repeat(3, 1fr); }
+    section { padding: 4rem 1.5rem; }
+    .about-grid, .contact-section { grid-template-columns: 1fr; gap: 2.5rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Surya Darshini</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="max-width:1200px;margin:0 auto;">
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Business &amp; Data Analyst — Dublin, Ireland</div>
+      <h1>Turning messy data into <em>clear decisions</em></h1>
+      <p class="hero-desc">MSc Business Analytics, Trinity College Dublin (Distinction). Experienced across funded startups and structured analytics projects — from NLP at scale to predictive dashboards presented at government events.</p>
+      <div class="hero-ctas">
+        <a href="mailto:suryadarshini1009@gmail.com" class="btn btn-primary">Get in touch</a>
+        <a href="https://linkedin.com/in/surya-darshini1009" target="_blank" class="btn btn-outline">LinkedIn</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <span class="stat-num">2K+</span>
+        <span class="stat-label">User reviews analysed with NLP</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">82%</span>
+        <span class="stat-label">AUC-ROC on mortality model</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">5</span>
+        <span class="stat-label">SQL reports automated</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">Competitors tracked in Tableau</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">1.9M</span>
+        <span class="stat-label">Data points processed (Tinder project)</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">Dist.</span>
+        <span class="stat-label">Trinity MSc Business Analytics</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<div class="full-width-section">
+  <section id="about">
+    <div class="section-label">Background</div>
+    <h2>About me</h2>
+    <div class="about-grid">
+      <div class="about-body">
+        <div class="about-badge">✦ Stamp 1G — Full-time work authorisation</div>
+        <p>I'm a Business and Data Analyst with hands-on experience across a funded AI startup and two structured internships. I work across the full BA lifecycle — from stakeholder interviews and requirements gathering through to sprint delivery and data-driven insights.</p>
+        <p>I'm comfortable both on the technical side (SQL, Python, Power BI, Tableau) and the stakeholder-facing side (user stories, process mapping, presentations to senior teams). My Trinity MSc dissertation applied NLP at scale to 2,000+ real user reviews across three major marketing platforms.</p>
+        <p>Available immediately. Open to Business Analyst and Data Analyst roles across Ireland, hybrid or on-site.</p>
+      </div>
+      <div class="about-details">
+        <div class="detail-item">
+          <div class="detail-label">Education</div>
+          <div class="detail-value">MSc Business Analytics, Distinction — Trinity College Dublin (Oct 2025)</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Current role</div>
+          <div class="detail-value">Business Analyst, YOKO Styles (AI Fashion Tech Startup)</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Location</div>
+          <div class="detail-value">Dublin, Ireland</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Work authorisation</div>
+          <div class="detail-value">Stamp 1G — full-time, no sponsorship required</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Availability</div>
+          <div class="detail-value">Immediate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Work</div>
+  <h2>Selected projects</h2>
+  <p class="section-intro">A selection of academic and professional work spanning NLP, predictive modelling, data visualisation, and big data strategy.</p>
+
+  <div class="projects-grid">
+
+    <!-- Project 1: Dissertation -->
+    <div class="project-card featured">
+      <div class="project-icon">📊</div>
+      <div class="project-tag-row">
+        <span class="tag accent">Dissertation</span>
+        <span class="tag green">NLP at Scale</span>
+      </div>
+      <div class="project-title">Marketing Analytics Adoption — NLP at Scale</div>
+      <div class="project-client">Trinity College Dublin · MSc Dissertation</div>
+      <p class="project-desc">Collected and processed 2,000+ user reviews from HubSpot, Marketo, and Salesforce using Python. Applied LDA topic modelling and sentiment analysis to identify adoption drivers and friction points, structured into findings mapped to distinct user personas.</p>
+      <div class="project-outcomes">
+        <div class="outcome">Built adoption scenario models achieving 15% higher forecast accuracy than baseline</div>
+        <div class="outcome">Identified distinct friction themes across usability, integration, and support</div>
+        <div class="outcome">Recommendations framed around vendor selection and procurement decisions</div>
+      </div>
+      <div class="project-tools">
+        <span class="tool-chip">Python</span>
+        <span class="tool-chip">NLTK</span>
+        <span class="tool-chip">spaCy</span>
+        <span class="tool-chip">LDA</span>
+        <span class="tool-chip">Sentiment Analysis</span>
+        <span class="tool-chip">Pandas</span>
+      </div>
+    </div>
+
+    <!-- Project 2: Fyffes Pineapple (combined) -->
+    <div class="project-card">
+      <div class="project-icon">🍍</div>
+      <div class="project-tag-row">
+        <span class="tag accent">Smart Farming</span>
+        <span class="tag">R · Shiny</span>
+      </div>
+      <div class="project-title">Pineapple Field Risk Management Dashboard</div>
+      <div class="project-client">Fyffes · Trinity College Dublin — Group Project</div>
+      <p class="project-desc">Built a predictive field risk management system for Fyffes' 3,000ha pineapple farm. Analysed pest incidence, weather data, and root health metrics across 26,000+ data points. Developed statistical models in R and an interactive Shiny dashboard for real-time farm decision support.</p>
+      <div class="project-outcomes">
+        <div class="outcome">Mortality model achieved AUC-ROC of 82% — identified lots 22K–24K as high risk</div>
+        <div class="outcome">ARIMA time series forecasting with RMSE of 0.046 for pest outbreak prediction</div>
+        <div class="outcome">Correlation analysis linked poor root health to 47% higher pest risk (Sinfilidos)</div>
+        <div class="outcome">Interactive Shiny dashboard with trend analysis, risk zones, and action recommendations</div>
+      </div>
+      <div class="project-tools">
+        <span class="tool-chip">R</span>
+        <span class="tool-chip">Shiny</span>
+        <span class="tool-chip">ggplot2</span>
+        <span class="tool-chip">ARIMA</span>
+        <span class="tool-chip">Random Forest</span>
+        <span class="tool-chip">Power Query</span>
+        <span class="tool-chip">plotly</span>
+      </div>
+    </div>
+
+    <!-- Project 3: Tinder -->
+    <div class="project-card">
+      <div class="project-icon">🔥</div>
+      <div class="project-tag-row">
+        <span class="tag accent">Data Management</span>
+        <span class="tag">Tableau</span>
+      </div>
+      <div class="project-title">Who Swipes? — Tinder User Insights</div>
+      <div class="project-client">Trinity College Dublin — Group Project (Group 2, Team 6)</div>
+      <p class="project-desc">Analysed anonymised data from 1,207 Tinder users (1.9M data points, 530MB JSON). Transformed, cleaned and normalised a nested JSON dataset into three relational tables using Python and Power Query. Built Tableau dashboards examining engagement patterns, gender dynamics, and the ROI of subscriptions.</p>
+      <div class="project-outcomes">
+        <div class="outcome">Male subscribers averaged 5x more matches than non-subscribers</div>
+        <div class="outcome">Female users received 67% more messages; success rate declines sharply after age 33</div>
+        <div class="outcome">Recommended targeted subscription campaigns for women aged 33+ based on data</div>
+        <div class="outcome">Designed ERD and Logical Database Model for the normalised dataset</div>
+      </div>
+      <div class="project-tools">
+        <span class="tool-chip">Python</span>
+        <span class="tool-chip">Power Query</span>
+        <span class="tool-chip">Tableau</span>
+        <span class="tool-chip">Excel</span>
+        <span class="tool-chip">ERD</span>
+        <span class="tool-chip">Data Normalisation</span>
+      </div>
+    </div>
+
+    <!-- Project 4: Kerry Group -->
+    <div class="project-card">
+      <div class="project-icon">🏭</div>
+      <div class="project-tag-row">
+        <span class="tag green">Big Data Strategy</span>
+        <span class="tag">AI</span>
+      </div>
+      <div class="project-title">Big Data Strategy for Kerry Group</div>
+      <div class="project-client">Trinity College Dublin — Group Project (Group 12)</div>
+      <p class="project-desc">Developed a comprehensive big data and AI strategy for Kerry Group across food safety, personalised nutrition, and smart labelling. Designed the full data architecture from ingestion through to analytics — including ETL pipelines, cloud storage, and ML model layers — with a cost-benefit analysis projecting up to $3.6B annual impact.</p>
+      <div class="project-outcomes">
+        <div class="outcome">Defined stakeholder mapping, data governance framework, and regulatory compliance approach</div>
+        <div class="outcome">Proposed AI architecture using AWS, Kafka, TensorFlow, Power BI, and Tableau</div>
+        <div class="outcome">Cost-benefit analysis showed breakeven achievable within first quarter of deployment</div>
+      </div>
+      <div class="project-tools">
+        <span class="tool-chip">Data Architecture</span>
+        <span class="tool-chip">ETL Design</span>
+        <span class="tool-chip">AWS</span>
+        <span class="tool-chip">Power BI</span>
+        <span class="tool-chip">Tableau</span>
+        <span class="tool-chip">Stakeholder Analysis</span>
+      </div>
+    </div>
+
+    <!-- Project 5: AI Factory -->
+    <div class="project-card">
+      <div class="project-icon">🤖</div>
+      <div class="project-tag-row">
+        <span class="tag accent">Optimisation</span>
+        <span class="tag">Simulation</span>
+      </div>
+      <div class="project-title">AI Factory Infrastructure Optimisation</div>
+      <div class="project-client">Trinity College Dublin — Advanced Analytics (BU7160)</div>
+      <p class="project-desc">Investigated cooling cost optimisation and GPU compute scheduling for large-scale AI factories. Built a mathematical optimisation model minimising annual cooling costs under space and power constraints, and compared four GPU scheduling policies (FCFS, SJF, Priority, Hybrid) across 30 simulation replications.</p>
+      <div class="project-outcomes">
+        <div class="outcome">Hybrid scheduling policy (α=0.6) achieved best balance: 80% GPU utilisation, 2.3h wait time, 4,800 priority points</div>
+        <div class="outcome">Priority-based scheduling maximised revenue but left 15% capacity unused (153 GPU-hours/day)</div>
+        <div class="outcome">Mathematical model recommended liquid cooling — 87% lower CO₂, 80% cost reduction vs air cooling</div>
+      </div>
+      <div class="project-tools">
+        <span class="tool-chip">Mathematical Modelling</span>
+        <span class="tool-chip">Simulation</span>
+        <span class="tool-chip">Linear Programming</span>
+        <span class="tool-chip">GPU Scheduling</span>
+        <span class="tool-chip">ARIMA</span>
+      </div>
+    </div>
+
+    <!-- Project 6: YOKO / Tableau -->
+    <div class="project-card">
+      <div class="project-icon">📈</div>
+      <div class="project-tag-row">
+        <span class="tag green">Professional</span>
+        <span class="tag">Tableau</span>
+      </div>
+      <div class="project-title">Competitive Intelligence Dashboard</div>
+      <div class="project-client">YOKO Styles — AI Fashion Tech Startup</div>
+      <p class="project-desc">Built a Tableau competitive intelligence dashboard tracking 10+ fashion-tech rivals for the YOKO Styles founding team. Findings were presented at a government startup event to support investor positioning and product roadmap decisions. Also applied Python NLP to analyse feedback from 20+ industry stakeholders.</p>
+      <div class="project-outcomes">
+        <div class="outcome">Dashboard presented at a government startup event to support investor positioning</div>
+        <div class="outcome">Topic modelling on qualitative feedback translated into prioritised feature requirements</div>
+        <div class="outcome">Maintained sprint backlog and user stories in Jira across iterative delivery cycles</div>
+      </div>
+      <div class="project-tools">
+        <span class="tool-chip">Tableau</span>
+        <span class="tool-chip">Python</span>
+        <span class="tool-chip">NLTK</span>
+        <span class="tool-chip">scikit-learn</span>
+        <span class="tool-chip">Jira</span>
+        <span class="tool-chip">Requirements Gathering</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<div class="full-width-section">
+  <section id="skills">
+    <div class="section-label">Capabilities</div>
+    <h2>Skills &amp; tools</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Data &amp; Analytics</h3>
+        <ul class="skill-list">
+          <li>Python (pandas, NLTK, spaCy, scikit-learn)</li>
+          <li>SQL (queries, automation, reporting)</li>
+          <li>R (ggplot2, caret, Shiny)</li>
+          <li>SPSS</li>
+          <li>LDA topic modelling</li>
+          <li>Sentiment analysis</li>
+          <li>Time series (ARIMA)</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Visualisation &amp; BI</h3>
+        <ul class="skill-list">
+          <li>Tableau (dashboards, published work)</li>
+          <li>Power BI</li>
+          <li>Excel (Pivot Tables, Macros, VBA)</li>
+          <li>KPI dashboard design</li>
+          <li>Data storytelling</li>
+          <li>Plotly / ggplot2</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Business Analysis</h3>
+        <ul class="skill-list">
+          <li>Requirements gathering</li>
+          <li>User stories &amp; acceptance criteria</li>
+          <li>Process mapping (Visio, Lucidchart)</li>
+          <li>Stakeholder engagement</li>
+          <li>Agile / Scrum (Jira)</li>
+          <li>Market &amp; competitor analysis</li>
+          <li>ESG analytics</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <h2>Get in touch</h2>
+  <div class="contact-section">
+    <div class="contact-text">
+      <p>Open to Business Analyst and Data Analyst roles across Ireland. Hybrid and on-site welcome. Stamp 1G — full-time work authorisation, no sponsorship required.</p>
+      <div class="contact-links">
+        <a href="mailto:suryadarshini1009@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉</span>
+          suryadarshini1009@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/surya-darshini1009" target="_blank" class="contact-link">
+          <span class="contact-link-icon">in</span>
+          linkedin.com/in/surya-darshini1009
+        </a>
+        <a href="tel:+353899461774" class="contact-link">
+          <span class="contact-link-icon">☎</span>
+          +353 89 946 1774
+        </a>
+      </div>
+    </div>
+    <div class="availability">
+      <strong>Available immediately</strong>
+      MSc Business Analytics, Distinction — Trinity College Dublin
+      <div class="avail-detail">Dublin, Ireland · Stamp 1G · No sponsorship required</div>
+      <div class="avail-detail" style="margin-top:1rem;">Open to roles in: Business Analysis · Data Analysis · Product Analytics · Reporting</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Surya Darshini · Dublin, Ireland · Built 2026
+</footer>
+
+</body>
+</html>
