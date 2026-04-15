@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surya Darshini | Business & Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  :root {
+    --bg: #0d0d0d; --bg2: #141414; --bg3: #1a1a1a;
+    --border: rgba(255,255,255,0.08); --border-hover: rgba(255,255,255,0.18);
+    --text: #f0ede8; --text-muted: #888580; --text-dim: #555250;
+    --accent: #c9a96e; --accent2: #7eb89a; --accent-dim: rgba(201,169,110,0.12);
+  }
+  body { font-family: 'Raleway', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--text-dim); border-radius: 2px; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(13,13,13,0.92); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'Source Serif 4', serif; font-size: 1.1rem; font-weight: 300; font-style: italic; color: var(--accent); text-decoration: none; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 4rem 5rem; max-width: 920px; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; }
+  .hero-tag::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+  h1 { font-family: 'Source Serif 4', serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 300; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 2rem; }
+  h1 span { color: var(--accent); font-style: italic; }
+  .hero-summary { font-size: 1rem; color: var(--text-muted); max-width: 600px; line-height: 1.9; margin-bottom: 3rem; }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.8rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; text-decoration: none; transition: all 0.25s; cursor: pointer; border: none; }
+  .btn-primary { background: var(--accent); color: #0d0d0d; }
+  .btn-primary:hover { background: #dfc082; }
+  .btn-outline { background: transparent; color: var(--text-muted); border: 1px solid var(--border-hover); }
+  .btn-outline:hover { color: var(--accent); border-color: var(--accent); }
+  .hero-stats { display: flex; gap: 3rem; flex-wrap: wrap; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+  .stat-num { font-family: 'Source Serif 4', serif; font-size: 1.9rem; font-weight: 300; color: var(--accent); display: block; line-height: 1; margin-bottom: 0.3rem; }
+  .stat-label { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .section-wrap { border-top: 1px solid var(--border); }
+  section { padding: 6rem 4rem; max-width: 1100px; margin: 0 auto; }
+  .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3.5rem; }
+  .section-num { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dim); }
+  h2 { font-family: 'Source Serif 4', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 300; letter-spacing: -0.01em; }
+
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 6rem; }
+  .about-text p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.9; margin-bottom: 1.2rem; }
+  .stamp { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-dim); border: 1px solid rgba(201,169,110,0.25); border-radius: 2px; padding: 0.4rem 1rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .about-details { display: flex; flex-direction: column; gap: 1.8rem; }
+  .detail { border-left: 1px solid var(--accent); padding-left: 1.2rem; }
+  .detail-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.3rem; }
+  .detail-val { font-size: 0.9rem; color: var(--text-muted); }
+
+  .projects-list { display: flex; flex-direction: column; gap: 1px; }
+  .project-item { display: grid; grid-template-columns: 260px 1fr; border: 1px solid var(--border); background: var(--bg2); transition: border-color 0.3s; }
+  .project-item:hover { border-color: var(--border-hover); }
+  .project-item:hover .pv { opacity: 1; }
+  .pv { opacity: 0.7; transition: opacity 0.3s; min-height: 220px; display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border); overflow: hidden; position: relative; }
+  .pv svg { width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+  .project-body { padding: 2rem 2.2rem; display: flex; flex-direction: column; }
+  .project-meta { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .p-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.22rem 0.6rem; border-radius: 1px; }
+  .p-tag-gold { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(201,169,110,0.2); }
+  .p-tag-green { background: rgba(126,184,154,0.1); color: var(--accent2); border: 1px solid rgba(126,184,154,0.2); }
+  .p-tag-dim { background: rgba(255,255,255,0.04); color: var(--text-dim); border: 1px solid var(--border); }
+  .project-title { font-family: 'Source Serif 4', serif; font-size: 1.25rem; font-weight: 300; color: var(--text); margin-bottom: 0.25rem; }
+  .project-client { font-size: 0.73rem; color: var(--text-dim); letter-spacing: 0.06em; margin-bottom: 0.9rem; }
+  .project-desc { font-size: 0.87rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1rem; flex: 1; }
+  .project-outcomes { margin-bottom: 1.1rem; display: flex; flex-direction: column; gap: 0.3rem; }
+  .outcome { font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 0.6rem; align-items: flex-start; }
+  .oa { color: var(--accent); flex-shrink: 0; font-weight: 600; }
+  .project-tools { display: flex; gap: 0.35rem; flex-wrap: wrap; padding-top: 0.9rem; border-top: 1px solid var(--border); }
+  .tool { font-size: 0.67rem; font-weight: 600; letter-spacing: 0.06em; color: var(--text-dim); background: rgba(255,255,255,0.04); padding: 0.18rem 0.5rem; border-radius: 1px; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+  .skill-col h3 { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+  .skill-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .skill-col li { font-size: 0.88rem; color: var(--text-muted); display: flex; gap: 0.7rem; align-items: center; }
+  .skill-col li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; opacity: 0.6; }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.5rem; }
+  .contact-link { display: flex; align-items: center; gap: 1rem; font-size: 0.88rem; color: var(--text-muted); text-decoration: none; padding: 0.9rem 1.2rem; border: 1px solid var(--border); transition: all 0.2s; }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+  .avail-card { background: var(--bg3); border: 1px solid var(--border); padding: 2rem; }
+  .avail-card h3 { font-family: 'Source Serif 4', serif; font-size: 1.3rem; font-weight: 300; margin-bottom: 0.8rem; }
+  .avail-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; }
+  .avail-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent2); margin-right: 0.5rem; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  footer { text-align: center; padding: 2rem 4rem; font-size: 0.75rem; color: var(--text-dim); border-top: 1px solid var(--border); letter-spacing: 0.06em; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .hero-tag{animation:fadeUp 0.9s 0.1s ease both}
+  h1{animation:fadeUp 0.9s 0.2s ease both}
+  .hero-summary{animation:fadeUp 0.9s 0.35s ease both}
+  .hero-ctas{animation:fadeUp 0.9s 0.45s ease both}
+  .hero-stats{animation:fadeUp 0.9s 0.55s ease both}
+
+  @media(max-width:768px){
+    nav{padding:1rem 1.5rem} .nav-links{display:none}
+    .hero{padding:7rem 1.5rem 4rem}
+    section{padding:4rem 1.5rem}
+    .about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem}
+    .skills-grid{grid-template-columns:1fr}
+    .project-item{grid-template-columns:1fr}
+    .pv{min-height:160px;border-right:none;border-bottom:1px solid var(--border)}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Surya Darshini</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div style="max-width:1100px;margin:0 auto;">
+<div class="hero">
+  <div class="hero-tag">Business &amp; Data Analyst — Dublin, Ireland</div>
+  <h1>Business & Data Analyst —<br><span>Dublin, Ireland</span></h1>
+  <p class="hero-summary">MSc Business Analytics, Trinity College Dublin (Distinction). Experienced across a funded AI startup and structured analytics projects — from NLP at scale to predictive dashboards presented at government startup events. SQL · Python · R · Power BI · Tableau · Agile.</p>
+  <div class="hero-ctas">
+    <a href="mailto:suryadarshini1009@gmail.com" class="btn btn-primary">Get in touch</a>
+    <a href="https://linkedin.com/in/surya-darshini1009" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">2,000+</span><span class="stat-label">Reviews analysed with NLP</span></div>
+    <div class="stat"><span class="stat-num">82%</span><span class="stat-label">AUC-ROC predictive model</span></div>
+    <div class="stat"><span class="stat-num">1.9M</span><span class="stat-label">Data points processed</span></div>
+    <div class="stat"><span class="stat-num">Dist.</span><span class="stat-label">Trinity MSc</span></div>
+  </div>
+</div>
+</div>
+
+<!-- ABOUT -->
+<div class="section-wrap">
+<section id="about">
+  <div class="section-header"><span class="section-num">01</span><h2>About me</h2></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="stamp">✦ Stamp 1G — Full-time work authorisation</div>
+      <p>I'm a Business and Data Analyst with hands-on experience across a funded AI startup and two structured internships. I work across the full BA lifecycle — from stakeholder interviews and requirements gathering through to sprint delivery and data-driven insights.</p>
+      <p>Comfortable on both the technical side (SQL, Python, R, Power BI, Tableau) and the stakeholder-facing side (user stories, process mapping, presentations to senior teams). My Trinity MSc dissertation applied NLP at scale to 2,000+ real user reviews across three major marketing analytics platforms.</p>
+      <p>Available immediately. Open to Business Analyst and Data Analyst roles across Ireland — hybrid and on-site welcome.</p>
+    </div>
+    <div class="about-details">
+      <div class="detail"><div class="detail-label">Education</div><div class="detail-val">MSc Business Analytics, Distinction<br>Trinity College Dublin — Oct 2025</div></div>
+      <div class="detail"><div class="detail-label">Current role</div><div class="detail-val">Business Analyst<br>YOKO Styles — AI Fashion Tech Startup</div></div>
+      <div class="detail"><div class="detail-label">Location</div><div class="detail-val">Dublin, Ireland</div></div>
+      <div class="detail"><div class="detail-label">Authorisation</div><div class="detail-val">Stamp 1G — full-time, no sponsorship needed</div></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- PROJECTS -->
+<div class="section-wrap">
+<section id="projects">
+  <div class="section-header"><span class="section-num">02</span><h2>Selected projects</h2></div>
+  <div class="projects-list">
+
+    <div class="project-item">
+      <div class="pv">
+        <svg viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="260" height="220" fill="#0f0f0f"/>
+          <rect x="18" y="25" width="224" height="12" rx="2" fill="#1e1e1e"/>
+          <rect x="18" y="45" width="170" height="7" rx="2" fill="#1a1a1a"/>
+          <rect x="18" y="60" width="200" height="7" rx="2" fill="#1a1a1a"/>
+          <rect x="18" y="80" width="48" height="48" rx="4" fill="#1c1a14"/><rect x="18" y="80" width="48" height="48" rx="4" fill="none" stroke="#c9a96e" stroke-width="0.5" opacity="0.4"/>
+          <text x="42" y="108" font-size="16" text-anchor="middle" fill="#c9a96e" opacity="0.7">📊</text>
+          <rect x="76" y="80" width="48" height="48" rx="4" fill="#141e17"/><rect x="76" y="80" width="48" height="48" rx="4" fill="none" stroke="#7eb89a" stroke-width="0.5" opacity="0.4"/>
+          <text x="100" y="108" font-size="16" text-anchor="middle" fill="#7eb89a" opacity="0.7">💬</text>
+          <rect x="134" y="80" width="48" height="48" rx="4" fill="#191414"/><rect x="134" y="80" width="48" height="48" rx="4" fill="none" stroke="#c97070" stroke-width="0.5" opacity="0.4"/>
+          <text x="158" y="108" font-size="16" text-anchor="middle" fill="#c97070" opacity="0.7">🔍</text>
+          <rect x="18" y="148" width="224" height="4" rx="2" fill="#1a1a1a"/>
+          <rect x="18" y="148" width="140" height="4" rx="2" fill="#c9a96e" opacity="0.5"/>
+          <text x="220" y="152" font-size="8" fill="#c9a96e" opacity="0.6">+15%</text>
+          <rect x="18" y="162" width="224" height="4" rx="2" fill="#1a1a1a"/>
+          <rect x="18" y="162" width="80" height="4" rx="2" fill="#7eb89a" opacity="0.4"/>
+          <rect x="18" y="176" width="224" height="4" rx="2" fill="#1a1a1a"/>
+          <rect x="18" y="176" width="180" height="4" rx="2" fill="#c9a96e" opacity="0.3"/>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span class="p-tag p-tag-gold">Dissertation</span><span class="p-tag p-tag-green">NLP at Scale</span></div>
+        <div class="project-title">Marketing Analytics Adoption — NLP at Scale</div>
+        <div class="project-client">Trinity College Dublin · MSc Dissertation</div>
+        <p class="project-desc">Collected and processed 2,000+ user reviews from HubSpot, Marketo, and Salesforce using Python. Applied LDA topic modelling and sentiment analysis to identify adoption drivers and friction points, structured into findings mapped to distinct user personas.</p>
+        <div class="project-outcomes">
+          <div class="outcome"><span class="oa">→</span>Adoption scenario models achieving 15% higher forecast accuracy than baseline</div>
+          <div class="outcome"><span class="oa">→</span>Distinct friction themes across usability, integration, and support identified</div>
+          <div class="outcome"><span class="oa">→</span>Recommendations framed around vendor selection and procurement decisions</div>
+        </div>
+        <div class="project-tools"><span class="tool">Python</span><span class="tool">NLTK</span><span class="tool">spaCy</span><span class="tool">LDA</span><span class="tool">Sentiment Analysis</span><span class="tool">Pandas</span></div>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div class="pv">
+        <svg viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="260" height="220" fill="#0d120f"/>
+          <rect x="18" y="18" width="224" height="85" rx="3" fill="#101a12"/>
+          <polyline points="28,90 58,55 88,70 118,40 148,52 178,27 208,46 240,33" fill="none" stroke="#7eb89a" stroke-width="1.5" opacity="0.7"/>
+          <polyline points="28,90 58,78 88,83 118,68 148,73 178,58 208,70 240,63" fill="none" stroke="#c9a96e" stroke-width="1.2" opacity="0.45" stroke-dasharray="4,2"/>
+          <circle cx="118" cy="40" r="3" fill="#7eb89a" opacity="0.9"/>
+          <circle cx="178" cy="27" r="3" fill="#7eb89a" opacity="0.9"/>
+          <rect x="18" y="115" width="55" height="55" rx="3" fill="#0f1a12"/>
+          <text x="45" y="147" font-size="20" text-anchor="middle" fill="#7eb89a" opacity="0.55">🍍</text>
+          <rect x="84" y="115" width="75" height="12" rx="2" fill="#141a14"/>
+          <rect x="84" y="133" width="55" height="7" rx="2" fill="#141a14"/>
+          <rect x="84" y="146" width="65" height="7" rx="2" fill="#141a14"/>
+          <rect x="84" y="159" width="45" height="7" rx="2" fill="#141a14"/>
+          <text x="215" y="145" font-size="18" font-weight="600" fill="#7eb89a" opacity="0.7" text-anchor="middle">82%</text>
+          <text x="215" y="162" font-size="8" fill="#7eb89a" opacity="0.35" text-anchor="middle">AUC-ROC</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span class="p-tag p-tag-green">Smart Farming</span><span class="p-tag p-tag-dim">R · Shiny</span></div>
+        <div class="project-title">Pineapple Field Risk Management Dashboard</div>
+        <div class="project-client">Fyffes · Trinity College Dublin — Group Project</div>
+        <p class="project-desc">Built a predictive field risk management system for Fyffes' 3,000ha pineapple farm. Analysed pest incidence, weather data, and root health metrics across 26,000+ data points. Developed statistical models in R and an interactive Shiny dashboard for real-time farm decision support.</p>
+        <div class="project-outcomes">
+          <div class="outcome"><span class="oa">→</span>Mortality model AUC-ROC of 82% — identified lots 22K–24K as highest risk</div>
+          <div class="outcome"><span class="oa">→</span>ARIMA forecasting with RMSE 0.046 for pest outbreak prediction</div>
+          <div class="outcome"><span class="oa">→</span>Poor root health linked to 47% higher pest risk (Sinfilidos)</div>
+          <div class="outcome"><span class="oa">→</span>Shiny dashboard with trend analysis, risk zones, and action recommendations</div>
+        </div>
+        <div class="project-tools"><span class="tool">R</span><span class="tool">Shiny</span><span class="tool">ggplot2</span><span class="tool">ARIMA</span><span class="tool">Random Forest</span><span class="tool">Power Query</span><span class="tool">plotly</span></div>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div class="pv">
+        <svg viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="260" height="220" fill="#100d0e"/>
+          <rect x="28" y="20" width="204" height="120" rx="10" fill="#1a1214" stroke="#c9a96e" stroke-width="0.4" opacity="0.7"/>
+          <circle cx="130" cy="50" r="20" fill="#1e1518"/>
+          <text x="130" y="57" font-size="18" text-anchor="middle" fill="#c9a96e" opacity="0.55">🔥</text>
+          <rect x="50" y="80" width="160" height="7" rx="2" fill="#251b1d"/>
+          <rect x="65" y="95" width="130" height="5" rx="2" fill="#1e1518"/>
+          <rect x="75" y="108" width="110" height="5" rx="2" fill="#1e1518"/>
+          <rect x="28" y="155" width="95" height="28" rx="3" fill="#1a1214" stroke="#c9a96e" stroke-width="0.3" opacity="0.4"/>
+          <text x="75" y="173" font-size="8" text-anchor="middle" fill="#c9a96e" opacity="0.45">1.9M data points</text>
+          <rect x="137" y="155" width="95" height="28" rx="3" fill="#1a1214" stroke="#c9a96e" stroke-width="0.3" opacity="0.4"/>
+          <text x="184" y="173" font-size="8" text-anchor="middle" fill="#c9a96e" opacity="0.45">1,207 users</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span class="p-tag p-tag-gold">Data Management</span><span class="p-tag p-tag-dim">Tableau</span></div>
+        <div class="project-title">Who Swipes? — Tinder User Insights</div>
+        <div class="project-client">Trinity College Dublin — Group Project (Group 2, Team 6)</div>
+        <p class="project-desc">Analysed anonymised data from 1,207 Tinder users (1.9M data points, 530MB JSON). Transformed a nested JSON dataset into three relational tables using Python and Power Query. Built Tableau dashboards examining engagement patterns, gender dynamics, and subscription ROI.</p>
+        <div class="project-outcomes">
+          <div class="outcome"><span class="oa">→</span>Male subscribers averaged 5x more matches than non-subscribers</div>
+          <div class="outcome"><span class="oa">→</span>Female users received 67% more messages; match rate drops sharply after age 33</div>
+          <div class="outcome"><span class="oa">→</span>Designed ERD and Logical Database Model for the normalised dataset</div>
+          <div class="outcome"><span class="oa">→</span>Recommended targeted subscription campaigns for women aged 33+ from data</div>
+        </div>
+        <div class="project-tools"><span class="tool">Python</span><span class="tool">Power Query</span><span class="tool">Tableau</span><span class="tool">Excel</span><span class="tool">ERD / LDM</span><span class="tool">Data Normalisation</span></div>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div class="pv">
+        <svg viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="260" height="220" fill="#0d1010"/>
+          <rect x="18" y="18" width="224" height="38" rx="3" fill="#131b1b"/>
+          <text x="130" y="41" font-size="10" text-anchor="middle" fill="#7eb89a" opacity="0.45" font-weight="600">KERRY GROUP — BIG DATA STRATEGY</text>
+          <rect x="18" y="66" width="48" height="48" rx="3" fill="#111a14" stroke="#7eb89a" stroke-width="0.4" opacity="0.5"/>
+          <text x="42" y="94" font-size="16" text-anchor="middle" fill="#7eb89a" opacity="0.45">📦</text>
+          <line x1="66" y1="90" x2="84" y2="90" stroke="#444" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <rect x="84" y="66" width="48" height="48" rx="3" fill="#131a11" stroke="#7eb89a" stroke-width="0.4" opacity="0.5"/>
+          <text x="108" y="94" font-size="16" text-anchor="middle" fill="#7eb89a" opacity="0.45">🤖</text>
+          <line x1="132" y1="90" x2="150" y2="90" stroke="#444" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <rect x="150" y="66" width="48" height="48" rx="3" fill="#1a1613" stroke="#c9a96e" stroke-width="0.4" opacity="0.55"/>
+          <text x="174" y="94" font-size="16" text-anchor="middle" fill="#c9a96e" opacity="0.55">📊</text>
+          <rect x="18" y="128" width="224" height="50" rx="3" fill="#111414"/>
+          <rect x="28" y="138" width="48" height="28" rx="2" fill="#1a1515" stroke="#c9a96e" stroke-width="0.3" opacity="0.35"/>
+          <text x="52" y="156" font-size="7" text-anchor="middle" fill="#c9a96e" opacity="0.45">ETL</text>
+          <rect x="86" y="138" width="48" height="28" rx="2" fill="#141a15" stroke="#7eb89a" stroke-width="0.3" opacity="0.35"/>
+          <text x="110" y="156" font-size="7" text-anchor="middle" fill="#7eb89a" opacity="0.45">Cloud</text>
+          <rect x="144" y="138" width="48" height="28" rx="2" fill="#1a1a14" stroke="#c9a96e" stroke-width="0.3" opacity="0.35"/>
+          <text x="168" y="156" font-size="7" text-anchor="middle" fill="#c9a96e" opacity="0.45">ML</text>
+          <text x="228" y="158" font-size="10" text-anchor="middle" fill="#c9a96e" opacity="0.55">$3.6B</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span class="p-tag p-tag-green">Big Data Strategy</span><span class="p-tag p-tag-dim">AI · Architecture</span></div>
+        <div class="project-title">Big Data Strategy for Kerry Group</div>
+        <div class="project-client">Trinity College Dublin — Group Project (Group 12)</div>
+        <p class="project-desc">Developed a comprehensive big data and AI strategy for Kerry Group covering food safety, personalised nutrition, and smart labelling. Designed the full data architecture from ingestion to analytics — ETL pipelines, cloud storage, and ML model layers — with a cost-benefit analysis projecting up to $3.6B annual impact.</p>
+        <div class="project-outcomes">
+          <div class="outcome"><span class="oa">→</span>Stakeholder mapping, data governance framework, and regulatory compliance design</div>
+          <div class="outcome"><span class="oa">→</span>Proposed AI architecture using AWS, Kafka, TensorFlow, Power BI, and Tableau</div>
+          <div class="outcome"><span class="oa">→</span>Cost-benefit analysis showed breakeven achievable within first quarter</div>
+        </div>
+        <div class="project-tools"><span class="tool">Data Architecture</span><span class="tool">ETL Design</span><span class="tool">AWS</span><span class="tool">Power BI</span><span class="tool">Tableau</span><span class="tool">Stakeholder Analysis</span></div>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div class="pv">
+        <svg viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="260" height="220" fill="#0d0d12"/>
+          <rect x="18" y="14" width="224" height="95" rx="3" fill="#111118"/>
+          <rect x="28" y="24" width="11" height="75" rx="2" fill="#1e1e2a"/>
+          <rect x="28" y="54" width="11" height="45" rx="2" fill="#c9a96e" opacity="0.4"/>
+          <rect x="46" y="24" width="11" height="75" rx="2" fill="#1e1e2a"/>
+          <rect x="46" y="40" width="11" height="59" rx="2" fill="#7eb89a" opacity="0.35"/>
+          <rect x="64" y="24" width="11" height="75" rx="2" fill="#1e1e2a"/>
+          <rect x="64" y="48" width="11" height="51" rx="2" fill="#c9a96e" opacity="0.5"/>
+          <rect x="82" y="24" width="11" height="75" rx="2" fill="#1e1e2a"/>
+          <rect x="82" y="30" width="11" height="69" rx="2" fill="#7eb89a" opacity="0.5"/>
+          <line x1="130" y1="18" x2="130" y2="109" stroke="#2a2a35" stroke-width="0.6"/>
+          <text x="195" y="48" font-size="20" text-anchor="middle" fill="#c9a96e" opacity="0.5">80%</text>
+          <text x="195" y="62" font-size="7" text-anchor="middle" fill="#c9a96e" opacity="0.3">GPU utilisation</text>
+          <text x="195" y="82" font-size="20" text-anchor="middle" fill="#7eb89a" opacity="0.5">2.3h</text>
+          <text x="195" y="96" font-size="7" text-anchor="middle" fill="#7eb89a" opacity="0.3">avg wait time</text>
+          <rect x="18" y="122" width="224" height="68" rx="3" fill="#111118"/>
+          <rect x="28" y="132" width="45" height="16" rx="2" fill="#1c1a14"/>
+          <text x="50" y="144" font-size="7" text-anchor="middle" fill="#888" opacity="0.6">FCFS 2.8h</text>
+          <rect x="82" y="132" width="45" height="16" rx="2" fill="#141c14"/>
+          <text x="104" y="144" font-size="7" text-anchor="middle" fill="#888" opacity="0.6">SJF 1.9h</text>
+          <rect x="136" y="132" width="45" height="16" rx="2" fill="#1a1414"/>
+          <text x="158" y="144" font-size="7" text-anchor="middle" fill="#888" opacity="0.6">PB 3.2h</text>
+          <rect x="82" y="155" width="100" height="22" rx="2" fill="#1a1a14" stroke="#c9a96e" stroke-width="0.5" opacity="0.6"/>
+          <text x="132" y="170" font-size="8" text-anchor="middle" fill="#c9a96e" opacity="0.75">Hybrid α=0.6 — Best</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span class="p-tag p-tag-gold">Optimisation</span><span class="p-tag p-tag-dim">Simulation · Modelling</span></div>
+        <div class="project-title">AI Factory Infrastructure Optimisation</div>
+        <div class="project-client">Trinity College Dublin — Advanced Analytics (BU7160)</div>
+        <p class="project-desc">Investigated cooling cost optimisation and GPU compute scheduling for large-scale AI factories (100,000 GPUs). Built a mathematical optimisation model and compared four GPU scheduling policies across 30 simulation replications each.</p>
+        <div class="project-outcomes">
+          <div class="outcome"><span class="oa">→</span>Hybrid scheduling (α=0.6): 80% GPU utilisation, 2.3h wait time, 4,800 priority points</div>
+          <div class="outcome"><span class="oa">→</span>Priority-based scheduling left 153 GPU-hours/day unused (€76.50/day wasted energy)</div>
+          <div class="outcome"><span class="oa">→</span>Liquid cooling recommended — 87% lower CO₂, 80% cost reduction vs air cooling</div>
+        </div>
+        <div class="project-tools"><span class="tool">Mathematical Modelling</span><span class="tool">Simulation</span><span class="tool">Linear Programming</span><span class="tool">GPU Scheduling</span><span class="tool">ARIMA</span></div>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div class="pv">
+        <svg viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="260" height="220" fill="#0d0e10"/>
+          <rect x="18" y="18" width="224" height="132" rx="3" fill="#111318"/>
+          <rect x="28" y="28" width="204" height="18" rx="2" fill="#151820"/>
+          <text x="38" y="41" font-size="8" fill="#7eb89a" opacity="0.45">Competitive Intelligence — YOKO Styles</text>
+          <rect x="28" y="54" width="55" height="85" rx="2" fill="#131620"/>
+          <text x="55" y="80" font-size="7" text-anchor="middle" fill="#c9a96e" opacity="0.35">Rival 1</text>
+          <rect x="28" y="88" width="55" height="22" rx="1" fill="#c9a96e" opacity="0.18"/>
+          <rect x="94" y="54" width="55" height="85" rx="2" fill="#131620"/>
+          <text x="121" y="80" font-size="7" text-anchor="middle" fill="#c9a96e" opacity="0.35">Rival 2</text>
+          <rect x="94" y="93" width="55" height="12" rx="1" fill="#7eb89a" opacity="0.2"/>
+          <rect x="160" y="54" width="62" height="85" rx="2" fill="#131620"/>
+          <text x="191" y="80" font-size="7" text-anchor="middle" fill="#c9a96e" opacity="0.35">YOKO</text>
+          <rect x="160" y="75" width="62" height="52" rx="1" fill="#c9a96e" opacity="0.15"/>
+          <text x="191" y="106" font-size="8" text-anchor="middle" fill="#c9a96e" opacity="0.65">↑ Best</text>
+          <rect x="18" y="163" width="224" height="30" rx="3" fill="#0f1015"/>
+          <text x="130" y="182" font-size="7.5" text-anchor="middle" fill="#7eb89a" opacity="0.35">Presented at Government Startup Event · 10+ rivals tracked</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span class="p-tag p-tag-gold">Professional</span><span class="p-tag p-tag-dim">Tableau · Python</span></div>
+        <div class="project-title">Competitive Intelligence Dashboard</div>
+        <div class="project-client">YOKO Styles — AI Fashion Tech Startup</div>
+        <p class="project-desc">Built a Tableau competitive intelligence dashboard tracking 10+ fashion-tech rivals for the YOKO founding team. Presented findings at a government startup event to support investor positioning and product roadmap decisions. Also applied Python NLP to qualitative feedback from 20+ industry stakeholders.</p>
+        <div class="project-outcomes">
+          <div class="outcome"><span class="oa">→</span>Dashboard presented at a government startup event for investor positioning</div>
+          <div class="outcome"><span class="oa">→</span>Topic modelling on stakeholder feedback translated into prioritised feature requirements</div>
+          <div class="outcome"><span class="oa">→</span>Maintained sprint backlog and user stories in Jira across iterative delivery cycles</div>
+        </div>
+        <div class="project-tools"><span class="tool">Tableau</span><span class="tool">Python</span><span class="tool">NLTK</span><span class="tool">scikit-learn</span><span class="tool">Jira</span><span class="tool">Requirements Gathering</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- SKILLS -->
+<div class="section-wrap">
+<section id="skills">
+  <div class="section-header"><span class="section-num">03</span><h2>Skills &amp; tools</h2></div>
+  <div class="skills-grid">
+    <div class="skill-col">
+      <h3>Data &amp; Analytics</h3>
+      <ul>
+        <li>Python (pandas, NLTK, spaCy, scikit-learn)</li>
+        <li>SQL (queries, automation, reporting)</li>
+        <li>R (ggplot2, caret, Shiny)</li>
+        <li>SPSS</li>
+        <li>LDA topic modelling</li>
+        <li>Sentiment analysis</li>
+        <li>Time series forecasting (ARIMA)</li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <h3>Visualisation &amp; BI</h3>
+      <ul>
+        <li>Tableau</li>
+        <li>Power BI</li>
+        <li>Excel (Pivot Tables, Macros, VBA)</li>
+        <li>KPI dashboard design</li>
+        <li>Data storytelling</li>
+        <li>Plotly / ggplot2</li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <h3>Business Analysis</h3>
+      <ul>
+        <li>Requirements gathering</li>
+        <li>User stories &amp; acceptance criteria</li>
+        <li>Process mapping (Visio, Lucidchart)</li>
+        <li>Stakeholder engagement</li>
+        <li>Agile / Scrum (Jira)</li>
+        <li>Market &amp; competitor analysis</li>
+        <li>ESG analytics</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- CONTACT -->
+<div class="section-wrap">
+<section id="contact">
+  <div class="section-header"><span class="section-num">04</span><h2>Get in touch</h2></div>
+  <div class="contact-grid">
+    <div>
+      <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.85;">Open to Business Analyst and Data Analyst roles across Ireland. Hybrid and on-site welcome. Stamp 1G — full-time work authorisation, no sponsorship required.</p>
+      <div class="contact-links">
+        <span class="contact-link">✉ &nbsp; suryadarshini1009@gmail.com</span>
+        <a href="https://linkedin.com/in/surya-darshini1009" target="_blank" class="contact-link">in &nbsp; linkedin.com/in/surya-darshini1009</a>
+        <a href="tel:+353899461774" class="contact-link">☎ &nbsp; +353 89 946 1774</a>
+      </div>
+    </div>
+    <div class="avail-card">
+      <h3><span class="avail-dot"></span>Available immediately</h3>
+      <p>MSc Business Analytics, Distinction<br>Trinity College Dublin — Oct 2025<br><br>Dublin, Ireland · Stamp 1G · No sponsorship required<br><br>Open to: Business Analysis · Data 
